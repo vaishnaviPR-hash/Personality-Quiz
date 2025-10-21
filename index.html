@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MBTI Personality Quiz</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { box-sizing: border-box; }
+.gradient-bg { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #d299c2 100%); position: relative; overflow: hidden; }
+.gradient-bg::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,119,198,0.3) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(120,219,255,0.2) 0%, transparent 50%); animation: float 20s ease-in-out infinite; }
+@keyframes float { 0%,100% { transform: translate(0px,0px) rotate(0deg); } 33% { transform: translate(30px,-30px) rotate(120deg); } 66% { transform: translate(-20px,20px) rotate(240deg); } }
+.question-card { transform: translateY(20px); opacity:0; animation: slideIn 0.6s ease-out forwards; }
+@keyframes slideIn { to { transform: translateY(0); opacity:1; } }
+.option-button { transition: all 0.3s ease; }
+.option-button:hover { transform: translateY(-2px); box-shadow:0 8px 25px rgba(0,0,0,0.15); }
+.progress-bar { transition: width 0.5s ease; }
+.result-card { animation: fadeInScale 0.8s ease-out; }
+@keyframes fadeInScale { from { opacity:0; transform: scale(0.9); } to { opacity:1; transform: scale(1); } }
+</style>
+</head>
+<body class="gradient-bg min-h-full font-sans">
+<main class="container mx-auto px-4 py-8 min-h-full">
+<div class="w-full max-w-2xl mx-auto">
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="text-center text-white">
+        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl">
+            <h1 class="text-4xl font-bold mb-4">🌟 MBTI Personality Quiz</h1>
+            <p class="text-xl mb-8 opacity-90">Discover your unique personality type with our 40-question quiz!</p>
+            <button onclick="startQuiz()" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Start Quiz ✨
+            </button>
+        </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quiz-screen" class="hidden">
+        <!-- Progress Bar -->
+        <div class="mb-8">
+            <div class="bg-white/20 rounded-full h-3 overflow-hidden">
+                <div id="progress-bar" class="progress-bar bg-white h-full rounded-full" style="width: 0%"></div>
+            </div>
+            <p class="text-white text-center mt-2 opacity-80">
+                Question <span id="current-question">1</span> of 40
+            </p>
+        </div>
+
+        <!-- Question Card -->
+        <div id="question-card" class="question-card bg-white rounded-3xl p-8 shadow-2xl">
+            <h2 id="question-text" class="text-2xl font-bold text-gray-800 mb-8 text-center"></h2>
+            
+            <div class="space-y-4">
+                <button id="option-a" class="option-button w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-2xl text-lg font-medium hover:from-blue-600 hover:to-purple-700">Yes</button>
+                <button id="option-b" class="option-button w-full bg-gradient-to-r from-pink-500 to-red-500 text-white p-6 rounded-2xl text-lg font-medium hover:from-pink-600 hover:to-red-600">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="hidden text-center text-white">
+        <div class="result-card bg-white/10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl">
+            <div class="text-6xl mb-4" id="result-emoji"></div>
+            <h2 class="text-3xl font-bold mb-4" id="result-title"></h2>
+            <p class="text-xl mb-8 opacity-90" id="result-description"></p>
+            <button onclick="restartQuiz()" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Take Quiz Again 🔄
+            </button>
+        </div>
+    </div>
+</div>
+</main>
+
+<script>
+// ===================== QUESTIONS =====================
+const questions = [
+/* E/I questions (10) */
+{ q:"At a party, do you enjoy meeting new people?", a:"A", b:"B" },
+{ q:"Do you feel energized by being around many people?", a:"A", b:"B" },
+{ q:"Do you prefer to speak up or listen quietly?", a:"A", b:"B" },
+{ q:"Would you rather go out or stay home to recharge?", a:"B", b:"A" },
+{ q:"Do you start conversations easily?", a:"A", b:"B" },
+{ q:"Do you enjoy group activities more than solo tasks?", a:"A", b:"B" },
+{ q:"Are you outgoing in unfamiliar situations?", a:"A", b:"B" },
+{ q:"Do you like brainstorming with others?", a:"A", b:"B" },
+{ q:"Do you prefer social gatherings over quiet time?", a:"A", b:"B" },
+{ q:"Do you speak your mind openly or keep thoughts private?", a:"B", b:"A" },
+
+/* S/N questions (10) */
+{ q:"Do you focus more on facts or ideas?", a:"A", b:"B" },
+{ q:"Do you trust practical experience over intuition?", a:"A", b:"B" },
+{ q:"Do you enjoy imagining possibilities?", a:"B", b:"A" },
+{ q:"Do you notice details or patterns more?", a:"A", b:"B" },
+{ q:"Do you prefer concrete info over abstract concepts?", a:"A", b:"B" },
+{ q:"Do you enjoy theoretical discussions?", a:"B", b:"A" },
+{ q:"Do you rely on senses more than intuition?", a:"A", b:"B" },
+{ q:"Do you prefer step-by-step instructions?", a:"A", b:"B" },
+{ q:"Do you enjoy exploring new ideas?", a:"B", b:"A" },
+{ q:"Do you focus on what’s real vs. possibilities?", a:"A", b:"B" },
+
+/* T/F questions (10) */
+{ q:"Do you prioritize logic over feelings?", a:"A", b:"B" },
+{ q:"Do you make decisions objectively?", a:"A", b:"B" },
+{ q:"Do you consider emotions when deciding?", a:"B", b:"A" },
+{ q:"Do you value fairness over harmony?", a:"A", b:"B" },
+{ q:"Do you analyze situations logically?", a:"A", b:"B" },
+{ q:"Do you prefer empathy in decisions?", a:"B", b:"A" },
+{ q:"Do you rely on reasoning more than intuition?", a:"A", b:"B" },
+{ q:"Do you consider moral implications?", a:"B", b:"A" },
+{ q:"Do you tend to debate or accommodate?", a:"A", b:"B" },
+{ q:"Do you trust analysis over gut feelings?", a:"A", b:"B" },
+
+/* J/P questions (10) */
+{ q:"Do you like planned schedules?", a:"A", b:"B" },
+{ q:"Do you finish tasks early?", a:"A", b:"B" },
+{ q:"Do you prefer organized environments?", a:"A", b:"B" },
+{ q:"Do you stick to deadlines?", a:"A", b:"B" },
+{ q:"Do you plan ahead regularly?", a:"A", b:"B" },
+{ q:"Do you prefer structure to flexibility?", a:"A", b:"B" },
+{ q:"Do you make lists and check them?", a:"A", b:"B" },
+{ q:"Do you postpone decisions often?", a:"B", b:"A" },
+{ q:"Do you prefer spontaneous activities?", a:"B", b:"A" },
+{ q:"Do you adapt easily to changes?", a:"B", b:"A" }
+];
+
+// ===================== PERSONALITY TYPES =====================
+const personalities = {
+"ISTJ": {emoji:"📋", title:"The Logistician", description:"Responsible, practical, and loyal. You value tradition and order."},
+"ISFJ": {emoji:"💖", title:"The Nurturer", description:"Supportive, caring, and dependable. You prioritize others' needs."},
+"INFJ": {emoji:"🌌", title:"The Advocate", description:"Insightful, creative, and altruistic. You focus on deeper meanings."},
+"INTJ": {emoji:"🧠", title:"The Mastermind", description:"Strategic, logical, and ambitious. You plan for long-term goals."},
+"ISTP": {emoji:"🔧", title:"The Virtuoso", description:"Practical, observant, and adventurous. You like hands-on problem solving."},
+"ISFP": {emoji:"🎨", title:"The Composer", description:"Sensitive, artistic, and flexible. You live in the present moment."},
+"INFP": {emoji:"💭", title:"The Mediator", description:"Idealistic, empathetic, and creative. You follow your values."},
+"INTP": {emoji:"🔬", title:"The Thinker", description:"Curious, analytical, and logical. You love exploring concepts."},
+"ESTP": {emoji:"⚡", title:"The Entrepreneur", description:"Energetic, spontaneous, and action-oriented. You love excitement."},
+"ESFP": {emoji:"🎉", title:"The Entertainer", description:"Outgoing, playful, and social. You enjoy the spotlight."},
+"ENFP": {emoji:"🌟", title:"The Campaigner", description:"Enthusiastic, curious, and imaginative. You value possibilities."},
+"ENTP": {emoji:"💡", title:"The Debater", description:"Innovative, clever, and curious. You love challenges and ideas."},
+"ESTJ": {emoji:"🏛️", title:"The Executive", description:"Organized, practical, and decisive. You value structure and leadership."},
+"ESFJ": {emoji:"🤝", title:"The Consul", description:"Warm, sociable, and cooperative. You care about harmony."},
+"ENFJ": {emoji:"🌈", title:"The Protagonist", description:"Charismatic, empathetic, and inspiring. You lead with vision."},
+"ENTJ": {emoji:"🚀", title:"The Commander", description:"Confident, strategic, and goal-oriented. You naturally lead others."}
+};
+
+// ===================== QUIZ LOGIC =====================
+let currentQuestion = 0;
+let answers = [];
+
+function startQuiz() {
+    document.getElementById('welcome-screen').classList.add('hidden');
+    document.getElementById('quiz-screen').classList.remove('hidden');
+    showQuestion();
+}
+
+function showQuestion() {
+    const q = questions[currentQuestion];
+    document.getElementById('question-text').textContent = q.q;
+    document.getElementById('current-question').textContent = currentQuestion + 1;
+    document.getElementById('progress-bar').style.width = ((currentQuestion+1)/questions.length*100)+'%';
+
+    document.getElementById('option-a').onclick = () => selectAnswer(q.a);
+    document.getElementById('option-b').onclick = () => selectAnswer(q.b);
+}
+
+function selectAnswer(ans) {
+    answers.push(ans);
+    if(currentQuestion < questions.length-1){
+        currentQuestion++;
+        setTimeout(showQuestion, 300);
+    } else {
+        setTimeout(showResults, 300);
+    }
+}
+
+function showResults() {
+    let EI=0,SN=0,TF=0,JP=0;
+    for(let i=0;i<answers.length;i++){
+        const ans = answers[i];
+        if(i<10){ ans==='A'?EI++:EI--; }
+        else if(i<20){ ans==='A'?SN++:SN--; }
+        else if(i<30){ ans==='A'?TF++:TF--; }
+        else{ ans==='A'?JP++:JP--; }
+    }
+    const type = (EI>0?'E':'I') + (SN>0?'S':'N') + (TF>0?'T':'F') + (JP>0?'J':'P');
+    const personality = personalities[type];
+
+    document.getElementById('quiz-screen').classList.add('hidden');
+    document.getElementById('results-screen').classList.remove('hidden');
+
+    document.getElementById('result-emoji').textContent = personality.emoji;
+    document.getElementById('result-title').textContent = personality.title;
+    document.getElementById('result-description').textContent = personality.description;
+}
+
+function restartQuiz() {
+    currentQuestion = 0;
+    answers = [];
+    document.getElementById('results-screen').classList.add('hidden');
+    document.getElementById('welcome-screen').classList.remove('hidden');
+    document.getElementById('progress-bar').style.width = '0%';
+}
+</script>
+</body>
+</html>
+
