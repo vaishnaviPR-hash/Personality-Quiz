@@ -1,4 +1,4 @@
-# 🌟 MBTI Personality Quiz
+# 🌟 Personality Quiz
 https://vaishnavipr-hash.github.io/Personality-Quiz/
 
 A fun and interactive web-based MBTI personality quiz that helps users discover their personality type through **40 engaging questions**. Each personality type comes with a unique emoji, title, description, strengths & weaknesses, and a detailed overview. Built with **HTML, Tailwind CSS, and vanilla JavaScript**.  
