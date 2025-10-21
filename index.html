@@ -50,8 +50,8 @@ body { box-sizing: border-box; }
             <h2 id="question-text" class="text-2xl font-bold text-gray-800 mb-8 text-center"></h2>
             
             <div class="space-y-4">
-                <button id="option-a" class="option-button w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-2xl text-lg font-medium hover:from-blue-600 hover:to-purple-700">Yes</button>
-                <button id="option-b" class="option-button w-full bg-gradient-to-r from-pink-500 to-red-500 text-white p-6 rounded-2xl text-lg font-medium hover:from-pink-600 hover:to-red-600">No</button>
+                <button id="option-a" class="option-button w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-2xl text-lg font-medium hover:from-blue-600 hover:to-purple-700"></button>
+                <button id="option-b" class="option-button w-full bg-gradient-to-r from-pink-500 to-red-500 text-white p-6 rounded-2xl text-lg font-medium hover:from-pink-600 hover:to-red-600"></button>
             </div>
         </div>
     </div>
@@ -73,53 +73,53 @@ body { box-sizing: border-box; }
 <script>
 // ===================== QUESTIONS =====================
 const questions = [
-/* E/I questions (10) */
-{ q:"At a party, do you enjoy meeting new people?", a:"A", b:"B" },
-{ q:"Do you feel energized by being around many people?", a:"A", b:"B" },
-{ q:"Do you prefer to speak up or listen quietly?", a:"A", b:"B" },
-{ q:"Would you rather go out or stay home to recharge?", a:"B", b:"A" },
-{ q:"Do you start conversations easily?", a:"A", b:"B" },
-{ q:"Do you enjoy group activities more than solo tasks?", a:"A", b:"B" },
-{ q:"Are you outgoing in unfamiliar situations?", a:"A", b:"B" },
-{ q:"Do you like brainstorming with others?", a:"A", b:"B" },
-{ q:"Do you prefer social gatherings over quiet time?", a:"A", b:"B" },
-{ q:"Do you speak your mind openly or keep thoughts private?", a:"B", b:"A" },
+  // E/I (10)
+  { q:"At a party, do you enjoy meeting new people?", optionA:{text:"Yes, I love meeting new people", value:"A"}, optionB:{text:"No, I prefer small gatherings", value:"B"} },
+  { q:"Do you feel energized by being around many people?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you prefer to speak up or listen quietly?", optionA:{text:"Speak up", value:"A"}, optionB:{text:"Listen quietly", value:"B"} },
+  { q:"Would you rather go out or stay home to recharge?", optionA:{text:"Go out", value:"B"}, optionB:{text:"Stay home", value:"A"} },
+  { q:"Do you start conversations easily?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you enjoy group activities more than solo tasks?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Are you outgoing in unfamiliar situations?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you like brainstorming with others?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you prefer social gatherings over quiet time?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you speak your mind openly or keep thoughts private?", optionA:{text:"Speak openly", value:"B"}, optionB:{text:"Keep private", value:"A"} },
 
-/* S/N questions (10) */
-{ q:"Do you focus more on facts or ideas?", a:"A", b:"B" },
-{ q:"Do you trust practical experience over intuition?", a:"A", b:"B" },
-{ q:"Do you enjoy imagining possibilities?", a:"B", b:"A" },
-{ q:"Do you notice details or patterns more?", a:"A", b:"B" },
-{ q:"Do you prefer concrete info over abstract concepts?", a:"A", b:"B" },
-{ q:"Do you enjoy theoretical discussions?", a:"B", b:"A" },
-{ q:"Do you rely on senses more than intuition?", a:"A", b:"B" },
-{ q:"Do you prefer step-by-step instructions?", a:"A", b:"B" },
-{ q:"Do you enjoy exploring new ideas?", a:"B", b:"A" },
-{ q:"Do you focus on what’s real vs. possibilities?", a:"A", b:"B" },
+  // S/N (10)
+  { q:"Do you focus more on facts or ideas?", optionA:{text:"Facts", value:"A"}, optionB:{text:"Ideas", value:"B"} },
+  { q:"Do you trust practical experience over intuition?", optionA:{text:"Practical experience", value:"A"}, optionB:{text:"Intuition", value:"B"} },
+  { q:"Do you enjoy imagining possibilities?", optionA:{text:"Yes", value:"B"}, optionB:{text:"No", value:"A"} },
+  { q:"Do you notice details or patterns more?", optionA:{text:"Details", value:"A"}, optionB:{text:"Patterns", value:"B"} },
+  { q:"Do you prefer concrete info over abstract concepts?", optionA:{text:"Concrete", value:"A"}, optionB:{text:"Abstract", value:"B"} },
+  { q:"Do you enjoy theoretical discussions?", optionA:{text:"Yes", value:"B"}, optionB:{text:"No", value:"A"} },
+  { q:"Do you rely on senses more than intuition?", optionA:{text:"Senses", value:"A"}, optionB:{text:"Intuition", value:"B"} },
+  { q:"Do you prefer step-by-step instructions?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you enjoy exploring new ideas?", optionA:{text:"Yes", value:"B"}, optionB:{text:"No", value:"A"} },
+  { q:"Do you focus on what’s real vs. possibilities?", optionA:{text:"Real", value:"A"}, optionB:{text:"Possibilities", value:"B"} },
 
-/* T/F questions (10) */
-{ q:"Do you prioritize logic over feelings?", a:"A", b:"B" },
-{ q:"Do you make decisions objectively?", a:"A", b:"B" },
-{ q:"Do you consider emotions when deciding?", a:"B", b:"A" },
-{ q:"Do you value fairness over harmony?", a:"A", b:"B" },
-{ q:"Do you analyze situations logically?", a:"A", b:"B" },
-{ q:"Do you prefer empathy in decisions?", a:"B", b:"A" },
-{ q:"Do you rely on reasoning more than intuition?", a:"A", b:"B" },
-{ q:"Do you consider moral implications?", a:"B", b:"A" },
-{ q:"Do you tend to debate or accommodate?", a:"A", b:"B" },
-{ q:"Do you trust analysis over gut feelings?", a:"A", b:"B" },
+  // T/F (10)
+  { q:"Do you prioritize logic over feelings?", optionA:{text:"Logic", value:"A"}, optionB:{text:"Feelings", value:"B"} },
+  { q:"Do you make decisions objectively?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you consider emotions when deciding?", optionA:{text:"Yes", value:"B"}, optionB:{text:"No", value:"A"} },
+  { q:"Do you value fairness over harmony?", optionA:{text:"Fairness", value:"A"}, optionB:{text:"Harmony", value:"B"} },
+  { q:"Do you analyze situations logically?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you prefer empathy in decisions?", optionA:{text:"Yes", value:"B"}, optionB:{text:"No", value:"A"} },
+  { q:"Do you rely on reasoning more than intuition?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you consider moral implications?", optionA:{text:"Yes", value:"B"}, optionB:{text:"No", value:"A"} },
+  { q:"Do you tend to debate or accommodate?", optionA:{text:"Debate", value:"A"}, optionB:{text:"Accommodate", value:"B"} },
+  { q:"Do you trust analysis over gut feelings?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
 
-/* J/P questions (10) */
-{ q:"Do you like planned schedules?", a:"A", b:"B" },
-{ q:"Do you finish tasks early?", a:"A", b:"B" },
-{ q:"Do you prefer organized environments?", a:"A", b:"B" },
-{ q:"Do you stick to deadlines?", a:"A", b:"B" },
-{ q:"Do you plan ahead regularly?", a:"A", b:"B" },
-{ q:"Do you prefer structure to flexibility?", a:"A", b:"B" },
-{ q:"Do you make lists and check them?", a:"A", b:"B" },
-{ q:"Do you postpone decisions often?", a:"B", b:"A" },
-{ q:"Do you prefer spontaneous activities?", a:"B", b:"A" },
-{ q:"Do you adapt easily to changes?", a:"B", b:"A" }
+  // J/P (10)
+  { q:"Do you like planned schedules?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you finish tasks early?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you prefer organized environments?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you stick to deadlines?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you plan ahead regularly?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you prefer structure to flexibility?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you make lists and check them?", optionA:{text:"Yes", value:"A"}, optionB:{text:"No", value:"B"} },
+  { q:"Do you postpone decisions often?", optionA:{text:"Yes", value:"B"}, optionB:{text:"No", value:"A"} },
+  { q:"Do you prefer spontaneous activities?", optionA:{text:"Yes", value:"B"}, optionB:{text:"No", value:"A"} },
+  { q:"Do you adapt easily to changes?", optionA:{text:"Yes", value:"B"}, optionB:{text:"No", value:"A"} },
 ];
 
 // ===================== PERSONALITY TYPES =====================
@@ -158,46 +158,47 @@ function showQuestion() {
     document.getElementById('current-question').textContent = currentQuestion + 1;
     document.getElementById('progress-bar').style.width = ((currentQuestion+1)/questions.length*100)+'%';
 
-    document.getElementById('option-a').onclick = () => selectAnswer(q.a);
-    document.getElementById('option-b').onclick = () => selectAnswer(q.b);
+    document.getElementById('option-a').textContent = q.optionA.text;
+    document.getElementById('option-b').textContent = q.optionB.text;
+
+    document.getElementById('option-a').onclick = () => selectAnswer(q.optionA.value);
+    document.getElementById('option-b').onclick = () => selectAnswer(q.optionB.value);
 }
 
 function selectAnswer(ans) {
     answers.push(ans);
     if(currentQuestion < questions.length-1){
         currentQuestion++;
-        setTimeout(showQuestion, 300);
+        setTimeout(showQuestion, 200);
     } else {
         setTimeout(showResults, 300);
     }
 }
 
 function showResults() {
-    let EI=0,SN=0,TF=0,JP=0;
-    for(let i=0;i<answers.length;i++){
-        const ans = answers[i];
-        if(i<10){ ans==='A'?EI++:EI--; }
-        else if(i<20){ ans==='A'?SN++:SN--; }
-        else if(i<30){ ans==='A'?TF++:TF--; }
-        else{ ans==='A'?JP++:JP--; }
-    }
-    const type = (EI>0?'E':'I') + (SN>0?'S':'N') + (TF>0?'T':'F') + (JP>0?'J':'P');
-    const personality = personalities[type];
+    // Convert 40 answers to MBTI type (10 per dimension)
+    function majority(slice){ return slice.filter(x=>'A'===x).length >= slice.filter(x=>'B'===x).length ? 'I':'E'; }
+    const EI = majority(answers.slice(0,10))==='E'?'E':'I';
+    const SN = majority(answers.slice(10,20))==='S'?'S':'N';
+    const TF = majority(answers.slice(20,30))==='T'?'T':'F';
+    const JP = majority(answers.slice(30,40))==='J'?'J':'P';
+    const mbti = EI+SN+TF+JP;
+
+    const personality = personalities[mbti] || {emoji:"❓", title:"Unknown", description:"Couldn't determine personality."};
 
     document.getElementById('quiz-screen').classList.add('hidden');
     document.getElementById('results-screen').classList.remove('hidden');
-
     document.getElementById('result-emoji').textContent = personality.emoji;
     document.getElementById('result-title').textContent = personality.title;
     document.getElementById('result-description').textContent = personality.description;
 }
 
 function restartQuiz() {
-    currentQuestion = 0;
-    answers = [];
+    currentQuestion=0;
+    answers=[];
     document.getElementById('results-screen').classList.add('hidden');
     document.getElementById('welcome-screen').classList.remove('hidden');
-    document.getElementById('progress-bar').style.width = '0%';
+    document.getElementById('progress-bar').style.width='0%';
 }
 </script>
 
@@ -213,5 +214,6 @@ function restartQuiz() {
 
 </body>
 </html>
+
 
 
