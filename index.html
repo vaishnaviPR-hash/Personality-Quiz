@@ -124,22 +124,134 @@ const questions = [
 
 // ===================== PERSONALITY TYPES =====================
 const personalities = {
-"ISTJ": {emoji:"📋", title:"The Logistician", description:"Responsible, practical, and loyal. You value tradition and order."},
-"ISFJ": {emoji:"💖", title:"The Nurturer", description:"Supportive, caring, and dependable. You prioritize others' needs."},
-"INFJ": {emoji:"🌌", title:"The Advocate", description:"Insightful, creative, and altruistic. You focus on deeper meanings."},
-"INTJ": {emoji:"🧠", title:"The Mastermind", description:"Strategic, logical, and ambitious. You plan for long-term goals."},
-"ISTP": {emoji:"🔧", title:"The Virtuoso", description:"Practical, observant, and adventurous. You like hands-on problem solving."},
-"ISFP": {emoji:"🎨", title:"The Composer", description:"Sensitive, artistic, and flexible. You live in the present moment."},
-"INFP": {emoji:"💭", title:"The Mediator", description:"Idealistic, empathetic, and creative. You follow your values."},
-"INTP": {emoji:"🔬", title:"The Thinker", description:"Curious, analytical, and logical. You love exploring concepts."},
-"ESTP": {emoji:"⚡", title:"The Entrepreneur", description:"Energetic, spontaneous, and action-oriented. You love excitement."},
-"ESFP": {emoji:"🎉", title:"The Entertainer", description:"Outgoing, playful, and social. You enjoy the spotlight."},
-"ENFP": {emoji:"🌟", title:"The Campaigner", description:"Enthusiastic, curious, and imaginative. You value possibilities."},
-"ENTP": {emoji:"💡", title:"The Debater", description:"Innovative, clever, and curious. You love challenges and ideas."},
-"ESTJ": {emoji:"🏛️", title:"The Executive", description:"Organized, practical, and decisive. You value structure and leadership."},
-"ESFJ": {emoji:"🤝", title:"The Consul", description:"Warm, sociable, and cooperative. You care about harmony."},
-"ENFJ": {emoji:"🌈", title:"The Protagonist", description:"Charismatic, empathetic, and inspiring. You lead with vision."},
-"ENTJ": {emoji:"🚀", title:"The Commander", description:"Confident, strategic, and goal-oriented. You naturally lead others."}
+  "ISTJ": {
+    emoji: "📋",
+    title: "The Logistician",
+    description: "Responsible, practical, and loyal. You value tradition and order.",
+    paragraph: "ISTJs are methodical and dependable. They excel in planning, organizing, and following through on commitments. They appreciate stability and consistency and are often trusted advisors in both personal and professional life.",
+    strengths_weaknesses: "Strengths: Responsible, organized, reliable, detail-oriented. Weaknesses: Stubborn, inflexible, sometimes insensitive to emotions.",
+    conclusion: "Overall, ISTJs are the backbone of any team or community, offering stability and reliability wherever they go."
+  },
+  "ISFJ": {
+    emoji: "💖",
+    title: "The Nurturer",
+    description: "Supportive, caring, and dependable. You prioritize others' needs.",
+    paragraph: "ISFJs are kind-hearted and conscientious. They focus on helping others, often putting their loved ones first. Detail-oriented and responsible, they create harmony and reliability in their environments.",
+    strengths_weaknesses: "Strengths: Caring, loyal, practical, patient. Weaknesses: Reluctant to change, may neglect own needs.",
+    conclusion: "ISFJs bring warmth and stability to their surroundings, making them dependable friends and colleagues."
+  },
+  "INFJ": {
+    emoji: "🌌",
+    title: "The Advocate",
+    description: "Insightful, creative, and altruistic. You focus on deeper meanings.",
+    paragraph: "INFJs are idealistic and principled. They are deeply empathetic and often seek to make the world a better place. They combine intuition with planning to pursue meaningful goals.",
+    strengths_weaknesses: "Strengths: Insightful, empathetic, determined, inspiring. Weaknesses: Overly sensitive, perfectionistic, reserved.",
+    conclusion: "INFJs are visionary and compassionate, often guiding others with their insights and moral compass."
+  },
+  "INTJ": {
+    emoji: "🧠",
+    title: "The Mastermind",
+    description: "Strategic, logical, and ambitious. You plan for long-term goals.",
+    paragraph: "INTJs are analytical and independent thinkers. They excel at strategic planning and solving complex problems. Often visionary, they are determined to turn their ideas into reality.",
+    strengths_weaknesses: "Strengths: Strategic, independent, logical, ambitious. Weaknesses: Arrogant, dismissive of emotions, perfectionist.",
+    conclusion: "INTJs are natural strategists, driven to achieve their goals with precision and foresight."
+  },
+  "ISTP": {
+    emoji: "🔧",
+    title: "The Virtuoso",
+    description: "Practical, observant, and adventurous. You like hands-on problem solving.",
+    paragraph: "ISTPs are action-oriented and adaptable. They love exploring how things work and are often skilled at handling tools or solving practical challenges. They enjoy freedom and spontaneity.",
+    strengths_weaknesses: "Strengths: Practical, adaptable, independent, adventurous. Weaknesses: Impulsive, private, can be insensitive.",
+    conclusion: "ISTPs are skilled problem-solvers who thrive in dynamic and hands-on situations."
+  },
+  "ISFP": {
+    emoji: "🎨",
+    title: "The Composer",
+    description: "Sensitive, artistic, and flexible. You live in the present moment.",
+    paragraph: "ISFPs are gentle and artistic, appreciating beauty and emotional experiences. They value personal freedom and often express themselves through creative pursuits while remaining attentive to others' feelings.",
+    strengths_weaknesses: "Strengths: Creative, empathetic, adaptable, gentle. Weaknesses: Reserved, avoids conflict, can be unpredictable.",
+    conclusion: "ISFPs bring warmth, creativity, and a sense of harmony wherever they go."
+  },
+  "INFP": {
+    emoji: "💭",
+    title: "The Mediator",
+    description: "Idealistic, empathetic, and creative. You follow your values.",
+    paragraph: "INFPs are thoughtful and guided by strong personal values. They are imaginative and empathetic, often seeking meaningful connections and striving to make a positive impact in the world.",
+    strengths_weaknesses: "Strengths: Empathetic, imaginative, idealistic, loyal. Weaknesses: Overly idealistic, private, can be impractical.",
+    conclusion: "INFPs are deeply reflective individuals who pursue authenticity and meaningful connections."
+  },
+  "INTP": {
+    emoji: "🔬",
+    title: "The Thinker",
+    description: "Curious, analytical, and logical. You love exploring concepts.",
+    paragraph: "INTPs are intellectual and inventive. They enjoy analyzing abstract ideas and solving complex problems. Often independent-minded, they thrive in environments that challenge their curiosity.",
+    strengths_weaknesses: "Strengths: Analytical, curious, inventive, logical. Weaknesses: Detached, absent-minded, can be critical.",
+    conclusion: "INTPs are natural thinkers, constantly exploring and questioning the world around them."
+  },
+  "ESTP": {
+    emoji: "⚡",
+    title: "The Entrepreneur",
+    description: "Energetic, spontaneous, and action-oriented. You love excitement.",
+    paragraph: "ESTPs are bold and adventurous, loving to live in the moment. They are natural problem-solvers and thrive in fast-paced environments. Their confidence and charisma make them natural leaders.",
+    strengths_weaknesses: "Strengths: Energetic, adaptable, confident, bold. Weaknesses: Impulsive, risk-taking, insensitive.",
+    conclusion: "ESTPs thrive on action and excitement, inspiring those around them with their bold energy."
+  },
+  "ESFP": {
+    emoji: "🎉",
+    title: "The Entertainer",
+    description: "Outgoing, playful, and social. You enjoy the spotlight.",
+    paragraph: "ESFPs are lively, energetic, and love connecting with others. They are spontaneous and enjoy experiencing life to the fullest, often bringing fun and excitement to any situation.",
+    strengths_weaknesses: "Strengths: Outgoing, playful, enthusiastic, friendly. Weaknesses: Easily bored, sensitive to criticism, impulsive.",
+    conclusion: "ESFPs bring joy, energy, and warmth, making life lively for everyone around them."
+  },
+  "ENFP": {
+    emoji: "🌟",
+    title: "The Campaigner",
+    description: "Enthusiastic, curious, and imaginative. You value possibilities.",
+    paragraph: "ENFPs are imaginative and spirited, constantly seeking new experiences. They are passionate, empathetic, and skilled at inspiring others to follow their ideas and dreams.",
+    strengths_weaknesses: "Strengths: Enthusiastic, creative, sociable, empathetic. Weaknesses: Overly emotional, scattered, struggles with routine.",
+    conclusion: "ENFPs inspire creativity and passion, motivating others with their contagious enthusiasm."
+  },
+  "ENTP": {
+    emoji: "💡",
+    title: "The Debater",
+    description: "Innovative, clever, and curious. You love challenges and ideas.",
+    paragraph: "ENTPs are quick-witted and energetic thinkers. They enjoy debating, exploring new ideas, and challenging the status quo. Their creativity and adaptability allow them to thrive in dynamic environments.",
+    strengths_weaknesses: "Strengths: Innovative, curious, quick-thinking, charismatic. Weaknesses: Argumentative, easily bored, impatient.",
+    conclusion: "ENTPs excel at generating ideas and challenging perspectives, bringing energy and insight to every discussion."
+  },
+  "ESTJ": {
+    emoji: "🏛️",
+    title: "The Executive",
+    description: "Organized, practical, and decisive. You value structure and leadership.",
+    paragraph: "ESTJs are pragmatic and organized. They value efficiency, rules, and traditions, often taking charge to lead projects and ensure goals are achieved reliably and effectively.",
+    strengths_weaknesses: "Strengths: Organized, practical, decisive, responsible. Weaknesses: Inflexible, judgmental, sometimes stubborn.",
+    conclusion: "ESTJs provide structure and leadership, ensuring tasks are completed efficiently and reliably."
+  },
+  "ESFJ": {
+    emoji: "🤝",
+    title: "The Consul",
+    description: "Warm, sociable, and cooperative. You care about harmony.",
+    paragraph: "ESFJs are friendly, empathetic, and dependable. They are attuned to the needs of others, seeking harmony and creating supportive environments in both personal and professional life.",
+    strengths_weaknesses: "Strengths: Caring, social, responsible, cooperative. Weaknesses: Sensitive to criticism, avoids conflict, sometimes self-sacrificing.",
+    conclusion: "ESFJs bring warmth and harmony to their surroundings, fostering strong and supportive connections."
+  },
+  "ENFJ": {
+    emoji: "🌈",
+    title: "The Protagonist",
+    description: "Charismatic, empathetic, and inspiring. You lead with vision.",
+    paragraph: "ENFJs are natural leaders with a strong sense of empathy. They inspire and motivate others, often taking action to guide people toward shared goals and meaningful causes.",
+    strengths_weaknesses: "Strengths: Charismatic, empathetic, inspiring, organized. Weaknesses: Overly idealistic, self-sacrificing, sensitive to criticism.",
+    conclusion: "ENFJs guide and inspire others, using their empathy and vision to create positive change."
+  },
+  "ENTJ": {
+    emoji: "🚀",
+    title: "The Commander",
+    description: "Confident, strategic, and goal-oriented. You naturally lead others.",
+    paragraph: "ENTJs are decisive, ambitious, and strategic. They excel at organizing people and resources to achieve objectives, often taking charge and inspiring others through their confidence and vision.",
+    strengths_weaknesses: "Strengths: Strategic, confident, decisive, ambitious. Weaknesses: Stubborn, impatient, sometimes insensitive.",
+    conclusion: "ENTJs are powerful leaders, driving progress and inspiring those around them with their vision and determination."
+  }
 };
 
 // ===================== QUIZ LOGIC =====================
@@ -190,7 +302,13 @@ function showResults() {
     document.getElementById('results-screen').classList.remove('hidden');
     document.getElementById('result-emoji').textContent = personality.emoji;
     document.getElementById('result-title').textContent = personality.title;
-    document.getElementById('result-description').textContent = personality.description;
+    document.getElementById('result-description').innerHTML = `
+  <strong>${personality.description}</strong><br><br>
+  ${personality.paragraph}<br><br>
+  <strong>Strengths & Weaknesses:</strong> ${personality.strengths_weaknesses}<br><br>
+  ${personality.conclusion}
+`;
+
 }
 
 function restartQuiz() {
@@ -201,6 +319,7 @@ function restartQuiz() {
     document.getElementById('progress-bar').style.width='0%';
 }
 </script>
+
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3LZWBS8VWP"></script>
@@ -214,6 +333,7 @@ function restartQuiz() {
 
 </body>
 </html>
+
 
 
 
