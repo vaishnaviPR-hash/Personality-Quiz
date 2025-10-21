@@ -1,4 +1,5 @@
 # 🌟 MBTI Personality Quiz
+https://vaishnavipr-hash.github.io/Personality-Quiz/
 
 A **fun and interactive MBTI personality quiz** built with **pure HTML, CSS, and JavaScript**.  
 Discover your unique personality type in just 40 simple Yes/No questions!
