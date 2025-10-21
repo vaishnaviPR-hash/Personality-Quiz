@@ -1,28 +1,53 @@
 # 🌟 MBTI Personality Quiz
 https://vaishnavipr-hash.github.io/Personality-Quiz/
 
-A **fun and interactive MBTI personality quiz** built with **pure HTML, CSS, and JavaScript**.  
-Discover your unique personality type in just 40 simple Yes/No questions!
+A fun and interactive web-based MBTI personality quiz that helps users discover their personality type through **40 engaging questions**. Each personality type comes with a unique emoji, title, description, strengths & weaknesses, and a detailed overview. Built with **HTML, Tailwind CSS, and vanilla JavaScript**.  
 
 ---
 
-## ✅ Features
+## 🛠️ Technologies Used
 
-- 40-question MBTI quiz (10 questions per dimension: E/I, S/N, T/F, J/P)  
-- Simple **Yes/No buttons** for user-friendly interaction  
-- Gradient buttons with smooth animations  
-- **Progress bar** to track your quiz completion  
-- Displays **emoji, personality type, and description** at the end  
-- Fully frontend – **no backend required**  
-- Works on any modern browser  
+- **HTML5** – Structure and content of the quiz.  
+- **Tailwind CSS** – Modern, responsive design with utility-first classes.  
+- **JavaScript (Vanilla)** – Quiz logic, progress tracking, and dynamic results.  
+- **CSS Animations** – Smooth card entrance and floating background effects.  
 
 ---
 
-## 🎨 Technologies Used
+## 📝 How It Works
 
-- **HTML5** – structure of the quiz  
-- **CSS3 + TailwindCSS** – styling and animations  
-- **JavaScript** – quiz logic and MBTI calculation  
+1. **Start Quiz:** Click the "Start Quiz" button on the welcome screen.  
+2. **Answer Questions:** Choose between two options for each of the 40 questions.  
+3. **Progress Tracking:** The progress bar updates after each question.  
+4. **View Results:** After completing the quiz, the result screen shows your MBTI personality type along with detailed descriptions.  
+5. **Restart:** Click the "Take Quiz Again" button to start over.  
 
 ---
 
+## ✅ Advantages
+
+Easy to use and visually appealing.
+
+Fully responsive and works on desktop and mobile devices.
+
+No backend required – fully client-side quiz.
+
+Quick results with detailed personality descriptions.
+
+Lightweight and fast-loading.
+
+---
+
+## ⚠️ Limitations
+
+Personality results are based on self-reported answers and may not be 100% accurate.
+
+Only 40 predefined questions – less comprehensive than full MBTI assessments.
+
+No data saving – quiz progress is lost if the page is refreshed.
+
+Limited customization unless the code is modified manually.
+
+Does not account for nuanced behaviors beyond the MBTI 4-letter type.
+
+---
